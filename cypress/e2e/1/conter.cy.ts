@@ -1,6 +1,7 @@
 describe("Counter Page", () => {
     function openPage() {
-        cy.visit("http://localhost:3000");
+        // cy.visit("http://localhost:3000");
+        cy.visit(Cypress.env('NEXT_APP_URL'));
         cy.get("[data-test-name=sidebar-hamburger]").click();
         cy.get("[data-sidebar-link-name=counter]").click();
     }

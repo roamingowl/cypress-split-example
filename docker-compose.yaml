@@ -1,0 +1,22 @@
+services:
+    next-app:
+      container_name: next-app
+      build:
+        context: .
+        dockerfile: next.Dockerfile
+      restart: always
+      ports:
+        - 3000:3000
+    cypress:
+      container_name: cypress
+      profiles:
+        - cypress
+      image: cypress/included:13.10.0
+      volumes:
+        - .:/e2e
+      working_dir: /e2e
+      environment:
+        - CYPRESS_NEXT_APP_URL=http://next-app:3000
+      command: cypress run
+      depends_on:
+        - next-app

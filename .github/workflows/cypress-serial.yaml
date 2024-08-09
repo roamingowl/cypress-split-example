@@ -1,0 +1,29 @@
+name: Cypress runnning serially
+
+on:
+  workflow_dispatch:
+    inputs: {}
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    cypress-serial:
+        name: Cypress
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Buuild docker imaage
+          run: |
+            docker compose build
+
+        - name: Run copmose
+          run: |
+              docker compose up -d
+
+        - name: Run cypress
+          run: |
+              docker compose run --rm cypress
