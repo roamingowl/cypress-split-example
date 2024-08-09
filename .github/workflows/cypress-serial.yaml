@@ -16,13 +16,19 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
-        - name: Buuild docker imaage
+        - name: Build docker imaag
           run: |
             docker compose build
 
         - name: Run copmose
           run: |
               docker compose up -d
+
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 20
+
+        - run: npm ci
 
         - name: Run cypress
           run: |
