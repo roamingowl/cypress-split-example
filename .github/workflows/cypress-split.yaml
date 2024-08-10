@@ -1,4 +1,4 @@
-name: Cypress running serially
+name: Cypress running in parallel
 
 on:
   workflow_dispatch:
@@ -9,7 +9,10 @@ defaults:
         shell: bash
 
 jobs:
-    cypress-serial:
+    cypress-paralel:
+        strategy:
+            matrix:
+              split_index: [1, 2]
         name: Cypress
         runs-on: ubuntu-latest
         steps:
@@ -32,6 +35,8 @@ jobs:
 
         - name: Run cypress
           env:
+            CYPRESS_SPLIT_INDEX: ${{ matrix.split_index }}
+            CYPRESS_SPLIT: 2
             CYPRESS_NEXT_APP_URL: http://next-app:3000
           run: |
               docker compose run --rm cypress
