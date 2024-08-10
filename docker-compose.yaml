@@ -19,6 +19,7 @@ services:
         - CYPRESS_NEXT_APP_URL=${CYPRESS_NEXT_APP_URL:-http://localhost:3000}
         - CYPRESS_SPLIT=${CYPRESS_SPLIT:-}
         - CYPRESS_SPLIT_INDEX=${CYPRESS_SPLIT_INDEX:-}
+        - CYPRESS_SPEC=${CYPRESS_SPEC:-}
       command: cypress run
       depends_on:
         - next-app

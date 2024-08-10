@@ -38,5 +38,6 @@ jobs:
             CYPRESS_SPLIT_INDEX: ${{ matrix.split_index }}
             CYPRESS_SPLIT: 2
             CYPRESS_NEXT_APP_URL: http://next-app:3000
+            CYPRESS_SPEC: cypress/e2e/**/*.cy.ts
           run: |
               docker compose run --rm cypress
