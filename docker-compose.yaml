@@ -17,6 +17,8 @@ services:
       working_dir: /e2e
       environment:
         - CYPRESS_NEXT_APP_URL=${CYPRESS_NEXT_APP_URL:-http://localhost:3000}
+        - CYPRESS_SPLIT=${CYPRESS_SPLIT:-}
+        - CYPRESS_SPLIT_INDEX=${CYPRESS_SPLIT_INDEX:-}
       command: cypress run
       depends_on:
         - next-app
