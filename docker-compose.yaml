@@ -1,5 +1,6 @@
 services:
     next-app:
+      image: ghcr.io/roamingowl/cypress-next:latest
       container_name: next-app
       build:
         context: .

@@ -1,0 +1,29 @@
+name: Build next image
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs: {}
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    build-image:
+        name: Build and push image
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Build and push
+          uses: docker/build-push-action@v5
+          with:
+            platforms: linux/amd64
+            context: "."
+            file: "next.Dockerfile"
+            tags: ghcr.io/roamingowl/cypress-next:latest, ghcr.io/roamingowl/cypress-next:${{ github.sha }}
+            push: true
