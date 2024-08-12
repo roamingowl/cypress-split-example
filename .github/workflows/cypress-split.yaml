@@ -19,10 +19,6 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
-        - name: Build docker imaag
-          run: |
-            docker compose build
-
         - name: Run copmose
           run: |
               docker compose up -d
