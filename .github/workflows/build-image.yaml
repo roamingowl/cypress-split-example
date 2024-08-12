@@ -19,6 +19,14 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
+        - name: Docker GitHub auth
+          uses: docker/login-action@v3
+          with:
+            registry: ghcr.io
+            username: token
+            password: ${{ secrets.WRITE_PACKAGES_TOKEN }}
+
+
         - name: Build and push
           uses: docker/build-push-action@v5
           with:
