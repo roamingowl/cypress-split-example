@@ -23,11 +23,6 @@ jobs:
             username: token
             password: ${{ secrets.WRITE_PACKAGES_TOKEN }}
 
-        - name: Cache Docker images.
-          uses: ScribeMD/docker-cache@0.5.0
-          with:
-            key: docker-${{ runner.os }}-${{ github.ref_name }}
-
         - name: Run copmose
           run: |
               docker compose up -d
@@ -41,11 +36,11 @@ jobs:
           shell: bash
           run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-        - uses: actions/cache@v3
+        - uses: actions/cache@v4
           id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
           with:
             path: ${{ steps.npm-cache-dir.outputs.dir }}
-            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            key: serial-${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
             restore-keys: |
               ${{ runner.os }}-node-
 
