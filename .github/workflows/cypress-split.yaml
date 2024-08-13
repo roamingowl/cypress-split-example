@@ -57,3 +57,29 @@ jobs:
             CYPRESS_SPEC: cypress/e2e/**/*.cy.ts
           run: |
               docker compose run --rm cypress
+
+        - name: Upload reports' artifacts
+          if: success() || failure()
+          uses: actions/upload-artifact@v3
+          with:
+            name: cypress_parale_artifact_${{ matrix.split_index }}
+            if-no-files-found: ignore
+            path: ctrf/ctrf-report.json
+            retention-days: 1
+
+    results:
+        runs-on: ubuntu-latest
+        if: always()
+        needs: cypress-paralel
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Download reports artifacts
+            uses: actions/download-artifact@v3
+            with:
+              path: downloaded_artifacts
+
+          - name: Publish CTRF Test Summary Results
+            run: |
+              ls -al downloaded_artifacts
+              npx github-actions-ctrf summary downloaded_artifacts
