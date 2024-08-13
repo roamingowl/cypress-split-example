@@ -64,7 +64,7 @@ jobs:
           with:
             name: cypress_parale_artifact_${{ matrix.split_index }}
             if-no-files-found: ignore
-            path: ctrf/ctrf-report.json
+            path: ctrf/*.json
             retention-days: 1
 
     results:
