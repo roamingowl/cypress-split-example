@@ -84,4 +84,5 @@ jobs:
               ls -al downloaded_artifacts/cypress_parale_artifact_1
               mkdir -p ctrf
               cp -v downloaded_artifacts/*/*.json ctrf
+              npx ctrf merge ctrf
               npx github-actions-ctrf summary ctrf
