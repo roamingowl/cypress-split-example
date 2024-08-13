@@ -60,7 +60,7 @@ jobs:
 
         - name: Upload reports' artifacts
           if: success() || failure()
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
             name: cypress_parale_artifact_${{ matrix.split_index }}
             if-no-files-found: ignore
