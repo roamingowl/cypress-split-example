@@ -81,5 +81,5 @@ jobs:
 
           - name: Publish CTRF Test Summary Results
             run: |
-              ls -al downloaded_artifacts
+              ls -al downloaded_artifacts/cypress_parale_artifact_1
               npx github-actions-ctrf summary downloaded_artifacts
