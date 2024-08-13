@@ -12,7 +12,7 @@ jobs:
     cypress-paralel:
         strategy:
             matrix:
-              split_index: [1, 2]
+              split_index: [1, 2, 3]
         name: Cypress
         runs-on: ubuntu-latest
         steps:
@@ -52,7 +52,7 @@ jobs:
         - name: Run cypress
           env:
             CYPRESS_SPLIT_INDEX: ${{ matrix.split_index }}
-            CYPRESS_SPLIT: 2
+            CYPRESS_SPLIT: 3
             CYPRESS_NEXT_APP_URL: http://next-app:3000
             CYPRESS_SPEC: cypress/e2e/**/*.cy.ts
           run: |
