@@ -85,4 +85,4 @@ jobs:
               mkdir -p ctrf
               cp -v downloaded_artifacts/*/*.json ctrf
               npx ctrf merge ctrf
-              npx github-actions-ctrf summary ctrf/ctrf-report.json
+              npx github-actions-ctrf summary ctrf/ctrf-report.json 
