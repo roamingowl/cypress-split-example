@@ -44,6 +44,7 @@ export default defineConfig({
 
       new GenerateCtrfReport({
         on,
+        outputFile: config.env.SPLIT_INDEX ? `ctrf-report-${config.env.SPLIT_INDEX}.json` : 'ctrf-report.json',
       });
 
       return config;
