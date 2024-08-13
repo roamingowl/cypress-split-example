@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 import fg from 'fast-glob';
+import { GenerateCtrfReport } from 'cypress-ctrf-json-reporter';
 
 function splitTests(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
   const chunksCount = parseInt(config.env.SPLIT);
@@ -40,6 +41,11 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       splitTests(on, config);
+
+      new GenerateCtrfReport({
+        on,
+      });
+
       return config;
     },
   },
