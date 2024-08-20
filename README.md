@@ -18,3 +18,6 @@ Counter screen:
 
 List items screen:
 ![List items page](https://github.com/user-attachments/assets/318255b2-9239-437d-a810-c2feb987be69)
+
+Serial cypress suite timing:
+<img width="975" alt="image" src="https://github.com/user-attachments/assets/940e678d-cfc7-4171-9ce9-3cffd64b9d43">
