@@ -1,5 +1,14 @@
 # Cypress example application 
 
+Example app to demonstrate how to simpluy split cypress e2e tests using GitHub actions through multiple runners.
+
+There are two pages:
+- counter page
+- list items page
+
+Covered by some [basic e2e tests](https://github.com/roamingowl/cypress-split-example/tree/main/cypress/e2e/1).
+
+
 Main screen
 <img width="2560" alt="image" src="https://github.com/user-attachments/assets/c0dea608-fbf8-4273-b7a9-81bd81b1bb25">
 
