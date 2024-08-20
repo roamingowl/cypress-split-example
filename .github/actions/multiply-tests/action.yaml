@@ -1,0 +1,18 @@
+name: Multiply tests
+
+inputs:
+  count:
+    description: Number of copies to make
+    required: false
+    default: 20
+
+runs:
+  using: composite
+  steps:
+    - name: Multiply tests
+      shell: bash
+      run: |
+        cd cypress/e2e
+        for i in {2..${{ inputs.count }}}; do 
+            cp -r 1 "$i"; 
+        done

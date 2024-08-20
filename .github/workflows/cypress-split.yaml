@@ -47,12 +47,9 @@ jobs:
             restore-keys: |
               ${{ runner.os }}-node-
 
-        - name: multiply tests
-          run: |
-            cd cypress/e2e
-            for i in {1..20}; do 
-                cp -r 1 "$i"; 
-            done
+        - uses: ./.github/actions/multiply-tests
+          with:
+            count: 20
 
         - run: npm i
 
