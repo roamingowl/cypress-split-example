@@ -13,9 +13,6 @@ jobs:
         name: Cypress
         runs-on: ubuntu-latest
         steps:
-          - name: Collect Workflow Telemetry
-            uses: catchpoint/workflow-telemetry-action@v2
-
           - name: Checkout
             uses: actions/checkout@v4
 
