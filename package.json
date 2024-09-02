@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.5",
     "@mui/material-nextjs": "^5.16.4",
-    "cypress": "^13.13.2",
+    "cypress": "^13.14.1",
     "fast-glob": "^3.3.2",
     "next": "latest",
     "react": "18.2.0",
