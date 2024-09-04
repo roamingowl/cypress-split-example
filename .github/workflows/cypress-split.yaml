@@ -9,7 +9,7 @@ defaults:
         shell: bash
 
 jobs:
-    cypress-paralel:
+    cypress-parallel:
         strategy:
             matrix:
               split_index: [1, 2, 3]
@@ -40,7 +40,7 @@ jobs:
             run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
           - uses: actions/cache@v4
-            id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+            id: npm-cache
             with:
               path: ${{ steps.npm-cache-dir.outputs.dir }}
               key: cy-split-${{ runner.name }}${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -74,7 +74,7 @@ jobs:
     results:
         runs-on: ubuntu-latest
         if: always()
-        needs: cypress-paralel
+        needs: cypress-parallel
         steps:
           - uses: actions/checkout@v4
 
