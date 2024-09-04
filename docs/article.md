@@ -95,9 +95,9 @@ The resulting time is about `~5 minutes` which is split between:
 
 Tests Summary table:
 
-| Tests 📝 | Passed ✅ | Failed ❌ | Skipped ⏭️ | Pending ⏳ | Other ❓ | Flaky 🍂 | Duration ⏱️ |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 120 | 120 | 0 | 0 | 0 | 0 | 0 | 00:03:27 |
+| Tests 📝 | Passed ✅ | Failed ❌ | Duration ⏱️ |
+| --- | --- | --- | --- |
+| 120 | 120 | 0 | 00:03:27 |
 
 # Splitting Cypress tests
 
@@ -367,9 +367,9 @@ After we wait for all the jobs to complete, we can easily merge and render the r
 
 Resulting table:
 
-| Tests 📝 | Passed ✅ | Failed ❌ | Skipped ⏭️ | Pending ⏳ | Other ❓ | Flaky 🍂 | Duration ⏱️ |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 120 | 120 | 0 | 0 | 0 | 0 | 0 | 00:01:17 |
+| Tests 📝 | Passed ✅ | Failed ❌ | Duration ⏱️ |
+| --- | --- | --- | --- |
+| 120 | 120 | 0 | 00:01:17 |
 
 Notice the time difference from the serial run:
 
@@ -388,7 +388,7 @@ No need to fiddle with tests or plugins or anything like that. Just update your 
 ```yaml
 # Define your matrix
 jobs:
-    playwright-paralel:
+    playwright-parallel:
         strategy:
             matrix:
               split_index: [1, 2, 3]
@@ -414,3 +414,18 @@ A few notes for the Playwright repo:
 * an example app and tets are the same as in Cypress repo
 
 * results are again gathered by [ctrf playwright plugin](https://github.com/ctrf-io/playwright-ctrf-json-report), merged with [ctrf cli](https://github.com/ctrf-io/ctrf) and rendered using [github-actions-test-reporter-ctrf](https://github.com/ctrf-io/github-actions-ctrf) GitHub action.
+
+
+Resulting table:
+
+| Tests 📝 | Passed ✅ | Failed ❌ | Duration ⏱️ |
+| --- | --- | --- | --- |
+| 120 | 120 | 0 | 00:00:34 |
+
+Total time compared to Cypress:
+
+| Cypress | Playwright |
+| --- | --- |
+| 00:01:17 | 00:00:34 |
+
+*Note: this is real time spent only on tests (not the docker/npm setup around). Interesting how much faster Playwright really is 😀.*
